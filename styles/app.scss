@@ -1,0 +1,9 @@
+@use './modules/fonts';
+@use './modules/colors';
+
+@use './build';
+
+html {
+  background-color: colors.$green;
+  font-family: fonts.$roboto
+}
