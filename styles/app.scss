@@ -1,9 +1,37 @@
+//reset
+@use './modules/reset';
+
+//reset
 @use './modules/fonts';
 @use './modules/colors';
 
+//pages
 @use './build';
 
-html {
+body {
   background-color: colors.$green;
-  font-family: fonts.$roboto
+  font-family: fonts.$roboto;
+  font-size: 16px;
+}
+
+p {
+  line-height: 1.5;
+}
+b, strong {
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 2rem;
 }
