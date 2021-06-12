@@ -1,0 +1,21 @@
+@use './modules/colors';
+@use './modules/fonts';
+
+.layout {
+  .nav {
+    position: fixed;
+    z-index:9999;
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    top: 1rem;
+    a{
+      color: white;
+      text-transform: lowercase;
+      margin: 0 3rem;
+      &:hover {
+        color: colors.$yellow;
+      }
+    }
+  }
+}
