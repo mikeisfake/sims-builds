@@ -41,7 +41,7 @@
     .content {
       padding: 3rem;
       background: colors.$green;
-      width: 100vw;
+      width: calc(100vw - 6rem);
       p {
         margin-bottom: 1.5rem;
         font-family: fonts.$monospace;
@@ -54,7 +54,7 @@
         flex-wrap: wrap;
         img {
           margin: 1rem;
-          width: 600px;
+          width: 350px;
           border-radius: .3rem;
         }
       }

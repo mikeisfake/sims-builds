@@ -21,6 +21,7 @@ const Build = () => {
              </ul>
            </p>
            <p><strong>cost</strong>: $500,000</p>
+           <p><strong>lot size</strong>: 30 x 40</p>
            <p><strong>Custom Content Creators</strong>:
              <ul>
                <li>felixandre</li>

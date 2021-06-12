@@ -1,8 +1,0 @@
-@use './modules/colors';
-@use './modules/fonts';
-
-.build_details {
-  h1 {
-    color: colors.$yellow;
-  }
-}

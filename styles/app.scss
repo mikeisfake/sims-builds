@@ -1,17 +1,21 @@
 //reset
 @use './modules/reset';
 
-//reset
+//modules
 @use './modules/fonts';
 @use './modules/colors';
 
+//layout
+@use './layout';
+
 //pages
-@use './build';
+@use './pages/build';
 
 body {
   background-color: colors.$green;
   font-family: fonts.$roboto;
   font-size: 16px;
+  color: white;
 }
 
 p {
@@ -19,6 +23,9 @@ p {
 }
 b, strong {
   font-weight: bold;
+}
+a {
+  text-decoration: none;
 }
 
 h1 {
