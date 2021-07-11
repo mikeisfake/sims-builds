@@ -7,10 +7,17 @@ export const getStaticProps = async () => {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
 
+  const res = await client.getEntries({content_type: 'build'})
+  return {
+    props: {
+      builds: res.items
+    }
+  }
+
 }
 
-const Home = () => {
-
+const Home = ({ builds }) => {
+  console.log(builds)
    return (
      <div className="home">
        <h1>HomePage</h1>
