@@ -18,9 +18,15 @@ export const getStaticProps = async () => {
 
 const Home = ({ builds }) => {
   console.log(builds)
+  
+  const names = builds.map(build => {
+    return <p>{build.fields.name}</p>
+  })
+
    return (
      <div className="home">
-       <h1>HomePage</h1>
+       <h1>Builds List</h1>
+       {names}
      </div>
    );
   }
