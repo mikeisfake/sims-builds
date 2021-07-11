@@ -1,8 +1,15 @@
-const Home = () => {
+import { createClient } from 'contentful'
 
-  const getStaticProps = async () => {
-    const res = await fetch(BASE_URL + process.env.CONTENTFUL_ACCESS_TOKEN)   
-  }
+export const getStaticProps = async () => {
+
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  })
+
+}
+
+const Home = () => {
 
    return (
      <div className="home">
