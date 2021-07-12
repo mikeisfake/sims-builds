@@ -10,6 +10,10 @@
 
 //pages
 @use './pages/build';
+@use './pages/home.scss';
+
+//components
+@use './components/build-card.scss';
 
 body {
   background-color: colors.$green;
