@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { createClient } from "contentful";
 import { useState, useEffect } from "react";
 import { NavList } from "../../components/NavList";
@@ -69,7 +68,7 @@ const BuildDetails = ({ build, builds }) => {
           setCurrentImage(imageURL);
         }}
       >
-        <Image src={"https:" + imageURL} layout="fill" objectFit="cover" />
+        <img src={"https:" + imageURL} />
       </div>
     );
   });
@@ -118,7 +117,7 @@ const BuildDetails = ({ build, builds }) => {
       </div>
       <div className="img-container">
         <div className="blocker"></div>
-        <Image src={"https:" + currentImage} layout="fill" objectFit="cover" />
+        <img src={"https:" + currentImage} />
       </div>
     </>
   );
