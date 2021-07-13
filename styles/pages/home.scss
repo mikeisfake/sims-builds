@@ -12,13 +12,16 @@
   align-items: flex-start;
   overflow: scroll;
   h1 {
-      position: relative;
+      position: sticky;
+      top: 0;
       left: 0;
-      width: 100vw;
+      width: calc(100vw - 2em);
       padding: .3em 1em;
       border-bottom: 1px solid colors.$gray;
       color: transparent;
       -webkit-text-stroke: 1px colors.$white;
+      background: lighten(colors.$black, 4%);
+      z-index: 5;
       .plumbob {
         margin-right: 10px;
       }
