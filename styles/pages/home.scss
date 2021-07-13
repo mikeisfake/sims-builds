@@ -11,21 +11,11 @@
   flex-direction: column;
   align-items: flex-start;
   overflow: scroll;
-  .card-container {
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100vw;
-    padding-top: 12em;
-    
-    h1 {
-      position: absolute;
-      top: 1em;
+  h1 {
+      position: relative;
       left: 0;
       width: 100vw;
-      padding-left: 3em;
-      padding-bottom: .2em;
+      padding: .3em 1em;
       border-bottom: 1px solid colors.$gray;
       color: transparent;
       -webkit-text-stroke: 1px colors.$white;
@@ -39,5 +29,12 @@
       -webkit-text-stroke: 0 transparent;
     }
     }
+  .card-container {
+    display: flex;
+    flex-direction:column;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
   }
 }

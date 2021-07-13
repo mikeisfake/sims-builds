@@ -2,16 +2,21 @@
 @use '../modules/fonts';
 
 #build-card {
-  padding: 1em;
-  margin: 1em;
-  width: 350px;
+  // padding: 1em;
+  width: calc(100vw - 2em);
+  display:flex;
+  justify-content: flex-start;
   color: colors.$black;
   transition: all 0.3s ease;
-  border: 1px solid colors.$gray;
-  h4 {
-    font-size: 1.3em;
+  border-bottom: 1px solid colors.$gray;
+  .details {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h4 {
+    font-size: 2.5em;
     font-weight: 600;
-    margin: .5em 0;
     margin-top: 0;
     color: colors.$light-gray
   }
@@ -19,14 +24,14 @@
     color: colors.$gray;
     font-family: fonts.$monospace;
   }
+  }
+  
   .image {
     img {
-      width: 100%;
-      margin-bottom: 10px;
+      width: 500px;
     }
   }
   &:hover {
-    border: 1px solid colors.$green;
-    transform: scale(1.01)
+    background: lighten(colors.$black, 4%);
   }
 }
