@@ -30,6 +30,7 @@
       }
     h2 {
       font-size: 2em;
+      flex-shrink: 1;
       a {
         color: transparent;
         -webkit-text-stroke: 1px colors.$off-white;
@@ -40,7 +41,6 @@
     }
     .builds {
       border-top: 1px solid colors.$light-gray;
-      max-height: 50vh;
       overflow:scroll;
       flex-grow: 2;
       a {
@@ -49,8 +49,10 @@
         letter-spacing: 1px;
       }
       li.active a {
-        // font-style: italic;
-        font-weight: 600;
+        background: colors.$off-white;
+        color: colors.$red;
+        cursor: default;
+        pointer-events: none;
       }
     }
     .description {
