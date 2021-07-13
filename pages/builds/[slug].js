@@ -92,20 +92,21 @@ const BuildDetails = ({ build, builds }) => {
             <p> {description} </p>
             <div className="details">
               <p>
-                <strong>world</strong>: {world}
+                <span>world</span> {world}
+                <br />
+                <span>lot size</span> {lotSize}
+                <br />
+                <span>cost</span> {`§${cost.toLocaleString()}.00`}
               </p>
+
               <p>
-                <strong>building features</strong>:<ul>{featuresList}</ul>
+                <span>building features</span>
+                <ul>{featuresList}</ul>
               </p>
-              <p>
-                <strong>cost</strong>: {"§" + cost.toLocaleString() + ".00"}
-              </p>
-              <p>
-                <strong>lot size</strong>: {lotSize}
-              </p>
+
               {customContent && (
                 <p>
-                  <strong>Custom Content Creators</strong>:
+                  <span>Custom Content Creators</span>
                   <ul>{creatorsList}</ul>
                 </p>
               )}
