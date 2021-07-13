@@ -1,5 +1,9 @@
+import Image from "next/image";
 import { createClient } from "contentful";
 import BuildCard from "../components/BuildCard";
+import { NavList } from "../components/NavList";
+import { useEffect } from "react";
+import { closeMenu } from "../functions/HandleMenu";
 
 export const getStaticProps = async () => {
   const client = createClient({
@@ -16,15 +20,25 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ builds }) => {
-  console.log(builds);
-
   const cards = builds.map((build) => {
     return <BuildCard key={build.sys.id} build={build} />;
   });
 
+  useEffect(() => {
+    closeMenu();
+  }, []);
+
   return (
     <div id="home">
+      <NavList builds={builds} />
       <div className="card-container">
+        <h1>
+          <span className="plumbob">
+            <Image src="/plumbob-green.png" width="25" height="50" />
+          </span>
+          builds.
+          <p>an app for sims builds</p>
+        </h1>
         {cards}
       </div>
     </div>
