@@ -1,17 +1,28 @@
 import Link from 'next/link'
+import { useEffect } from 'react';
+import { openMenu, closeMenu } from '../functions/HandleMenu';
+
 
  const Layout = ({ children }) => {
-   return (
-    <div className="layout">
-      <nav className="nav">
-        <Link href="/"><a> <h3>Home</h3> </a></Link>
-        <Link href="/about"><a> <h3>About</h3> </a></Link>
-        <Link href="/"><a> <h3>Builds</h3> </a></Link>
-      </nav>
-      { children }
-    </div>
 
-    )
+  useEffect(() => {
+    closeMenu()
+  }, [])
+
+
+   return (
+     <div className="layout">
+       <div id="cover" onClick={closeMenu}></div>
+       <nav className="nav" onClick={openMenu}>
+         {/* {"\u25EF \u25EF \u25EF"} */}
+         <div className="circle"></div>
+         <div className="circle"></div>
+         <div className="circle"></div>
+       </nav>
+
+       {children}
+     </div>
+   );
   }
 
 export default Layout
