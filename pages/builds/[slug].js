@@ -31,9 +31,10 @@ export const getStaticProps = async ({ params }) => {
   const res = await client.getEntries({ content_type: "build" });
 
   return {
-    props: { 
+    props: {
       build: items[0],
-      builds: res.items },
+      builds: res.items,
+    },
   };
 };
 
@@ -50,15 +51,14 @@ const BuildDetails = ({ build, builds }) => {
     customContent,
   } = build.fields;
 
-
   const initImg =
     gallery[Math.floor(Math.random() * gallery.length)].fields.file.url;
   const [currentImage, setCurrentImage] = useState(initImg);
 
   useEffect(() => {
     setCurrentImage(initImg);
-    closeMenu()
-  }, [build])
+    closeMenu();
+  }, [build]);
 
   const galleryImages = gallery.map((data) => {
     let imageURL = data.fields.file.url;
@@ -99,7 +99,7 @@ const BuildDetails = ({ build, builds }) => {
                 <strong>building features</strong>:<ul>{featuresList}</ul>
               </p>
               <p>
-                <strong>cost</strong>: {"$" + cost.toLocaleString() + ".00"}
+                <strong>cost</strong>: {"§" + cost.toLocaleString() + ".00"}
               </p>
               <p>
                 <strong>lot size</strong>: {lotSize}
@@ -111,18 +111,14 @@ const BuildDetails = ({ build, builds }) => {
                 </p>
               )}
             </div>
-          <h3>Gallery</h3>
+            <h3>Gallery</h3>
           </div>
           <div className="gallery">{galleryImages}</div>
         </article>
       </div>
       <div className="img-container">
         <div className="blocker"></div>
-        <Image
-          src={"https:" + currentImage}
-          layout="fill"
-          objectFit="cover"
-          />
+        <Image src={"https:" + currentImage} layout="fill" objectFit="cover" />
       </div>
     </>
   );
