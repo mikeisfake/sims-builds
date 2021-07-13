@@ -1,23 +1,32 @@
+@use '../modules/colors';
+@use '../modules/fonts';
+
 #build-card {
-    padding: 1em;
-    margin: 1em;
-    width: 350px;
-    background: white;
-    border-radius: 5px;
-    color: black;
-    transition: all .3s ease;
-    h4 {
-        font-size: 1.3em;
-        font-weight: 600;  
+  padding: 1em;
+  margin: 1em;
+  width: 350px;
+  color: colors.$black;
+  transition: all 0.3s ease;
+  border: 1px solid colors.$gray;
+  h4 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: .5em 0;
+    margin-top: 0;
+    color: colors.$light-gray
+  }
+  p {
+    color: colors.$gray;
+    font-family: fonts.$monospace;
+  }
+  .image {
+    img {
+      width: 100%;
+      margin-bottom: 10px;
     }
-    .image {
-        img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-    }
-    &:hover {
-        transform: scale(1.05);
-    }
+  }
+  &:hover {
+    border: 1px solid colors.$green;
+    transform: scale(1.01)
+  }
 }

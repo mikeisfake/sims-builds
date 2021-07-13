@@ -1,7 +1,43 @@
+@use '../modules/colors';
+@use '../modules/fonts';
+
 #home {
-    .card-container {
-        display: flex;
-        position: relative;
-        top: 100px;
+  background: colors.$black;
+  color: colors.$white;
+  position: relative;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: scroll;
+  .card-container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    padding-top: 12em;
+    
+    h1 {
+      position: absolute;
+      top: 1em;
+      left: 0;
+      width: 100vw;
+      padding-left: 3em;
+      padding-bottom: .2em;
+      border-bottom: 1px solid colors.$gray;
+      color: transparent;
+      -webkit-text-stroke: 1px colors.$white;
+      .plumbob {
+        margin-right: 10px;
+      }
+      p {
+        font-family: fonts.$monospace;
+        font-size: .3em;
+        color: colors.$off-white;
+      -webkit-text-stroke: 0 transparent;
     }
+    }
+  }
 }

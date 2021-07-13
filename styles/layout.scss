@@ -1,20 +1,56 @@
 @use './modules/colors';
 @use './modules/fonts';
 
+#cover {
+  display: none;
+  background: rgba(#000, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  &.open {
+    display: block;
+  }
+}
+
 .layout {
   .nav {
     position: fixed;
-    z-index:9999;
+    z-index: 9999;
     display: flex;
-    justify-content: flex-end;
-    width: 100vw;
-    top: 1rem;
-    a{
-      color: white;
-      text-transform: lowercase;
-      margin: 0 3rem;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+    line-height: 0;
+    top: 0;
+    right: 0;
+    background: colors.$red;
+    transition: all 0.3s ease;
+    writing-mode: vertical-rl;
+    color: colors.$off-white;
+    cursor: pointer;
+    border-right: 1px solid colors.$light-gray;
+    .circle {
+      height: 0.5em;
+      width: 0.5em;
+      margin: 0.1em 0;
+      border: 1px solid colors.$off-white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    &:hover {
+      background: lighten(colors.$red, 8%);
+      .circle {
+        background: colors.$off-white;
+      }
+    }
+    &.open {
+      right: 500px;
       &:hover {
-        color: colors.$yellow;
+        background: lighten(colors.$red, 8%);
       }
     }
   }

@@ -14,12 +14,14 @@
 
 //components
 @use './components/build-card.scss';
+@use './components/nav-list.scss';
 
 body {
-  background-color: colors.$green;
+  background-color: colors.$off-white;
   font-family: fonts.$roboto;
   font-size: 16px;
-  color: white;
+  color: colors.$black;
+  transition: margin-right .3s ease;
 }
 
 p {
