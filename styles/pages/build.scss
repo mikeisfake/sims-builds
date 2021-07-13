@@ -42,24 +42,32 @@
         padding-left: 8rem;
         text-align: left;
         margin-left: -8rem;
-        width: 40vw;
+        width: calc(40vw - 8rem);
         margin-bottom: 1rem;
       }
       h3 {
         font-weight: 300;
         font-size: 2em;
       }
+      h2 {
+        position: sticky;
+        background: colors.$off-white;;
+        top: 0;
+      }
       .details {
         border: 1px solid colors.$light-gray;
         padding: 1.5em;
         margin-bottom: 2rem;
-        strong {
+        span {
           font-family: fonts.$roboto;
-          text-transform: uppercase;
-          color: colors.$black;
+          text-transform: capitalize;
+          border-bottom: 1px solid;
+          font-weight: 400;
+          color: colors.$red;
+          padding-bottom: 2px;
         }
         p {
-          color: colors.$gray;
+          color: colors.$black;
           ul {
             list-style-type: "+ ";
             margin-left: 1em;
