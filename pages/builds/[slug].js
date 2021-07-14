@@ -66,6 +66,7 @@ const BuildDetails = ({ build, builds }) => {
     return (
       <div
         className="img-wrapper"
+        key={data.public_id}
         onClick={() => {
           setCurrentImage(data);
           setImageIdx(images.indexOf(data))
@@ -104,13 +105,13 @@ const BuildDetails = ({ build, builds }) => {
   
 
   const featuresList = features.map((feature) => {
-    return <li>{feature}</li>;
+    return <li key={feature}>{feature}</li>;
   });
 
   const creatorsList =
     customContent &&
     customContent.map((creator) => {
-      return <li>{creator}</li>;
+      return <li key={creator}>{creator}</li>;
     });
   return (
     <>
@@ -121,24 +122,24 @@ const BuildDetails = ({ build, builds }) => {
             <h2>{name}</h2>
             <p> {description} </p>
             <div className="details">
-              <p>
+              <section>
                 <span>world</span> {world}
                 <br />
                 <span>lot size</span> {lotSize}
                 <br />
                 <span>cost</span> {`§${cost.toLocaleString()}.00`}
-              </p>
+              </section>
 
-              <p>
+              <section>
                 <span>building features</span>
                 <ul>{featuresList}</ul>
-              </p>
+              </section>
 
               {customContent && (
-                <p>
+                <section>
                   <span>Custom Content Creators</span>
                   <ul>{creatorsList}</ul>
-                </p>
+                </section>
               )}
             </div>
           </div>

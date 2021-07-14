@@ -11,7 +11,7 @@ export const NavList = ({ builds }) => {
     let slug = build.fields.slug;
     
     return (
-      <li className={router.query.slug === slug ? "active" : ""}>
+      <li key={slug} className={router.query.slug === slug ? "active" : ""}>
         <Link href={`/builds/${slug}`}>
           {name}
         </Link>
@@ -28,7 +28,7 @@ export const NavList = ({ builds }) => {
       </h2>
       <ul className="builds">{buildLinks}</ul>
 
-      <p className="description">
+      <div className="description">
         <h4>About.</h4>
         This app is designed to show off some of my favorite builds I've made in
         The Sims 4. When I'm not coding my favorite activity is building houses
@@ -37,7 +37,7 @@ export const NavList = ({ builds }) => {
         <br />
         This app was created using Next.js on the front end and the content is
         managed from Contentful
-      </p>
+      </div>
     </div>
   );
 };

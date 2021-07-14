@@ -33,7 +33,11 @@ const Home = ({ builds }) => {
       <NavList builds={builds} />
       <h1>
         <span className="plumbob">
-          <Image src="/plumbob-green.png" width="25" height="50" />
+          <Image
+            src="v1626275078/plumbob-green_kdutg6.png"
+            width="25"
+            height="50"
+          />
         </span>
         builds.
         <p>an app for sims builds</p>
