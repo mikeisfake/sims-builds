@@ -40,7 +40,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const BuildDetails = ({ build, builds }) => {
-  console.log(build);
   const {
     cost,
     coverImage,
@@ -53,8 +52,10 @@ const BuildDetails = ({ build, builds }) => {
     customContent,
   } = build.fields;
 
-  const initImg = images[Math.floor(Math.random() * images.length)].public_id;
+  const initImg = images[Math.floor(Math.random() * images.length)];
+  // const initImgURL = initImg.public_id
   const [currentImage, setCurrentImage] = useState(initImg);
+  const [imageIdx, setImageIdx] = useState(images.indexOf(currentImage))
 
   useEffect(() => {
     setCurrentImage(initImg);
@@ -62,19 +63,45 @@ const BuildDetails = ({ build, builds }) => {
   }, [build]);
 
   const galleryImages = images.map((data) => {
-    let imageURL = data.public_id;
-    console.log(imageURL);
     return (
       <div
         className="img-wrapper"
         onClick={() => {
-          setCurrentImage(imageURL);
+          setCurrentImage(data);
+          setImageIdx(images.indexOf(data))
         }}
       >
-        <Image src={imageURL} layout="fill" objectFit="cover" />
+        <Image src={data.public_id} layout="fill" objectFit="cover" />
       </div>
     );
   });
+
+  const handlePrevImg = () => {
+    if (imageIdx === 0) {
+      const newImg = images[images.length - 1]
+      setImageIdx(images.length -1)
+      setCurrentImage(newImg)
+    } else {
+      const newImg = images[imageIdx - 1]
+      setImageIdx(imageIdx - 1)
+      setCurrentImage(newImg)
+    }
+  }
+
+  const handleNextImg = () => {
+    let lastImg = images.length - 1 
+
+    if (imageIdx === lastImg) {
+      const newImg = images[0];
+      setImageIdx(0)
+      setCurrentImage(newImg);
+    } else {
+      const newImg = images[imageIdx + 1];
+      setImageIdx(imageIdx + 1)
+      setCurrentImage(newImg);
+    }
+  };
+  
 
   const featuresList = features.map((feature) => {
     return <li>{feature}</li>;
@@ -122,12 +149,14 @@ const BuildDetails = ({ build, builds }) => {
         </article>
       </div>
       <div className="img-container">
-        <div className="blocker"></div>
+        <div className="blocker">
+          <button className="prevbtn" onClick={handlePrevImg}> <span>prev</span> </button>
+          <button className="nextbtn" onClick={handleNextImg}> <span>next</span> </button>
+        </div>
         <Image
-          src={currentImage}
+          src={currentImage.public_id}
           layout="fill"
           objectFit="cover"
-          priority="true"
         />
       </div>
     </>

@@ -14,13 +14,40 @@
   }
   .blocker {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     z-index: 100;
-    border: 1px solid colors.$white;
+    // border: 1px solid colors.$white;
+    button {
+      height: 100%;
+      // position: absolute;
+      font-family: fonts.$monospace;
+      padding: 1em .5em;
+      line-height: 0;
+      background: rgba(colors.$white, .2);
+      border: none;
+      color: colors.$white;
+      font-size: 1em;
+      transition: .3s ease;
+      &:hover {
+        background: rgba(colors.$white, 1);
+        color: colors.$black;
+      }
+    }
+    .nextbtn {
+      right: 0;
+      // transform: rotate(90deg);
+    }
+    .prevbtn {
+      left: 0;
+      // transform: rotate(-90deg);
+    }
   }
   img {
     height: 100%;
@@ -81,7 +108,7 @@
       // margin-bottom: 2em;
       // margin-top: -7em;
       // position: relative;
-      background: colors.$red;;
+      background: colors.$red;
       .gallery-images {
         display: flex;
         justify-content: center;
