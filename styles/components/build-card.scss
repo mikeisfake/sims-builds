@@ -25,9 +25,9 @@
   }
   }
   .image {
-    img {
-      width: 500px;
-    }
+    width: 500px;
+    height: 652px;
+    position: relative;
   }
   &:hover {
     background: lighten(colors.$black, 4%);

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { createClient } from "contentful";
 import { useState, useEffect } from "react";
 import { NavList } from "../../components/NavList";
@@ -38,20 +40,20 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const BuildDetails = ({ build, builds }) => {
+  console.log(build);
   const {
     cost,
     coverImage,
     description,
     features,
-    gallery,
+    images,
     lotSize,
     name,
     world,
     customContent,
   } = build.fields;
 
-  const initImg =
-    gallery[Math.floor(Math.random() * gallery.length)].fields.file.url;
+  const initImg = images[Math.floor(Math.random() * images.length)].public_id;
   const [currentImage, setCurrentImage] = useState(initImg);
 
   useEffect(() => {
@@ -59,8 +61,9 @@ const BuildDetails = ({ build, builds }) => {
     closeMenu();
   }, [build]);
 
-  const galleryImages = gallery.map((data) => {
-    let imageURL = data.fields.file.url;
+  const galleryImages = images.map((data) => {
+    let imageURL = data.public_id;
+    console.log(imageURL);
     return (
       <div
         className="img-wrapper"
@@ -68,7 +71,7 @@ const BuildDetails = ({ build, builds }) => {
           setCurrentImage(imageURL);
         }}
       >
-        <img src={"https:" + imageURL} />
+        <Image src={imageURL} layout="fill" objectFit="cover" />
       </div>
     );
   });
@@ -111,14 +114,21 @@ const BuildDetails = ({ build, builds }) => {
                 </p>
               )}
             </div>
-            <h3>Gallery</h3>
           </div>
-          <div className="gallery">{galleryImages}</div>
+          <div className="gallery">
+            <h2>Gallery</h2>
+            <div className="gallery-images">{galleryImages}</div>
+          </div>
         </article>
       </div>
       <div className="img-container">
         <div className="blocker"></div>
-        <img src={"https:" + currentImage} />
+        <Image
+          src={currentImage}
+          layout="fill"
+          objectFit="cover"
+          priority="true"
+        />
       </div>
     </>
   );
