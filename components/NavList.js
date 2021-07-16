@@ -1,12 +1,26 @@
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { createClient } from "contentful";
 
 export const NavList = ({ builds }) => {
-  const router = useRouter()
+  const router = useRouter();
 
+  const [searchTerm, setSearchTerm] = useState('')
   
-  const buildLinks = builds.map((build) => {
+  const handleChange = (event) => {
+      setSearchTerm(event.target.value);
+      console.log(searchTerm)
+  }
+  
+  const buildLinks = builds
+  .filter(build => {
+    if (searchTerm == '') {
+      return build
+    } else if (build.fields.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return build
+    }
+  }).map((build) => {
     let name = build.fields.name;
     let slug = build.fields.slug;
     
@@ -22,10 +36,14 @@ export const NavList = ({ builds }) => {
   return (
     <div id="nav-list">
       <h2>
-        <Link className="home-link" href="/">
+        <Link href="/">
           index
         </Link>
       </h2>
+      <div className="search">
+        <input type="search" placeholder="search" onChange={handleChange}/>
+        <span className="focus-bg"></span>
+      </div>
       <ul className="builds">{buildLinks}</ul>
 
       <div className="description">
