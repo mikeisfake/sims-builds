@@ -31,17 +31,19 @@ const Home = ({ builds }) => {
   return (
     <div id="home">
       <NavList builds={builds} />
-      <h1>
-        <span className="plumbob">
-          <Image
-            src="v1626275078/plumbob-green_kdutg6.png"
-            width="25"
-            height="50"
-          />
-        </span>
-        builds.
-        <p>an app for sims builds</p>
-      </h1>
+      <header>
+        <h1>
+          <span className="plumbob">
+            <Image
+              src="v1626275078/plumbob-green_kdutg6.png"
+              width="25"
+              height="50"
+            />
+          </span>
+          builds
+        </h1>
+        <h4>the sims 4 builds by mike.</h4>
+      </header>
       <div className="card-container">{cards}</div>
     </div>
   );
