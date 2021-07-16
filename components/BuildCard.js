@@ -17,7 +17,7 @@ export default function BuildCard({ build }) {
           />
         </div>
         <div className="details">
-          <h4 className="name">{name}</h4>
+          <h2 className="name">{name}</h2>
           <p> {lotSize} </p>
           <p> {world} </p>
           <p> {lotType} </p>
