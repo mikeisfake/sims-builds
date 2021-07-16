@@ -15,10 +15,22 @@
   }
 }
 
-.layout {
+#layout {
+  position: relative;
+  cursor: none;
+  .cursor {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid white; 
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+  }
   .nav {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -28,11 +40,11 @@
     top: 0;
     right: 0;
     background: colors.$red;
-    transition: all 0.3s ease;
     writing-mode: vertical-rl;
     color: colors.$off-white;
     cursor: pointer;
     border-right: 1px solid colors.$light-gray;
+    transition: all .7s cubic-bezier(0,.82,.46,1);
     .circle {
       height: 0.5em;
       width: 0.5em;
@@ -43,12 +55,14 @@
     }
     &:hover {
       background: lighten(colors.$red, 8%);
+      cursor: none;
       .circle {
         background: colors.$off-white;
       }
     }
     &.open {
       right: 500px;
+      
       &:hover {
         background: lighten(colors.$red, 8%);
       }
