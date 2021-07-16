@@ -3,7 +3,9 @@ import Link from "next/link";
 import { createClient } from "contentful";
 import { useState, useEffect } from "react";
 import { NavList } from "../../components/NavList";
+import { Details } from "../../components/Details";
 import { closeMenu } from "../../functions/HandleMenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -41,80 +43,74 @@ export const getStaticProps = async ({ params }) => {
 
 const BuildDetails = ({ build, builds }) => {
   const {
-    cost,
-    coverImage,
     description,
-    features,
     images,
-    lotSize,
     name,
-    world,
-    customContent,
   } = build.fields;
 
   const initImg = images[Math.floor(Math.random() * images.length)];
-  // const initImgURL = initImg.public_id
   const [currentImage, setCurrentImage] = useState(initImg);
-  const [imageIdx, setImageIdx] = useState(images.indexOf(currentImage))
+  const [imageIdx, setImageIdx] = useState(images.indexOf(currentImage));
 
   useEffect(() => {
     setCurrentImage(initImg);
     closeMenu();
   }, [build]);
 
-  const galleryImages = images.map((data) => {
+  const galleryImages = images.map((image) => {
+
+    const randomNumber = {
+      order: Math.floor(Math.random() * images.length),
+    }
+
     return (
       <div
         className="img-wrapper"
-        key={data.public_id}
+        key={image.public_id}
         onClick={() => {
-          setCurrentImage(data);
-          setImageIdx(images.indexOf(data))
+          setCurrentImage(image);
+          setImageIdx(images.indexOf(image));
         }}
-      >
-        <Image src={data.public_id} layout="fill" objectFit="cover" />
+        // TODO figure out how to randomize order of images in gallery just once rather than it updating every time the current image is changed
+          // style={randomNumber}
+        >
+        <Image
+          src={`${image.public_id}.${image.format}`}
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
     );
   });
 
   const handlePrevImg = () => {
+    let newImg;
     if (imageIdx === 0) {
-      const newImg = images[images.length - 1]
-      setImageIdx(images.length -1)
-      setCurrentImage(newImg)
+      newImg = images[images.length - 1];
+      setImageIdx(images.length - 1);
     } else {
-      const newImg = images[imageIdx - 1]
-      setImageIdx(imageIdx - 1)
-      setCurrentImage(newImg)
+      newImg = images[imageIdx - 1];
+      setImageIdx(imageIdx - 1);
     }
-  }
+    setCurrentImage(newImg);
+  };
 
   const handleNextImg = () => {
-    let lastImg = images.length - 1 
+    let lastImg = images.length - 1;
+    let newImg;
 
     if (imageIdx === lastImg) {
-      const newImg = images[0];
-      setImageIdx(0)
-      setCurrentImage(newImg);
+      newImg = images[0];
+      setImageIdx(0);
     } else {
-      const newImg = images[imageIdx + 1];
-      setImageIdx(imageIdx + 1)
-      setCurrentImage(newImg);
+      newImg = images[imageIdx + 1];
+      setImageIdx(imageIdx + 1);
     }
+    setCurrentImage(newImg);
   };
-  
 
-  const featuresList = features.map((feature) => {
-    return <li key={feature}>{feature}</li>;
-  });
-
-  const creatorsList =
-    customContent &&
-    customContent.map((creator) => {
-      return <li key={creator}>{creator}</li>;
-    });
   return (
-    <>
+    <div id="build-container">
       <NavList builds={builds} />
       <div className="build_details">
         <article>
@@ -122,25 +118,7 @@ const BuildDetails = ({ build, builds }) => {
             <h2>{name}</h2>
             <p> {description} </p>
             <div className="details">
-              <section>
-                <span>world</span> {world}
-                <br />
-                <span>lot size</span> {lotSize}
-                <br />
-                <span>cost</span> {`§${cost.toLocaleString()}.00`}
-              </section>
-
-              <section>
-                <span>building features</span>
-                <ul>{featuresList}</ul>
-              </section>
-
-              {customContent && (
-                <section>
-                  <span>Custom Content Creators</span>
-                  <ul>{creatorsList}</ul>
-                </section>
-              )}
+              <Details build={build.fields}/>
             </div>
           </div>
           <div className="gallery">
@@ -151,16 +129,21 @@ const BuildDetails = ({ build, builds }) => {
       </div>
       <div className="img-container">
         <div className="blocker">
-          <button className="prevbtn" onClick={handlePrevImg}> <span>prev</span> </button>
-          <button className="nextbtn" onClick={handleNextImg}> <span>next</span> </button>
+          <button className="prevbtn" onClick={handlePrevImg}>
+            <span>
+              <FontAwesomeIcon icon="chevron-left" size="lg"/>
+            </span>
+          </button>
+
+          <button className="nextbtn" onClick={handleNextImg}>
+            <span>
+              <FontAwesomeIcon icon="chevron-right" size="lg"/>
+            </span>
+          </button>
         </div>
-        <Image
-          src={currentImage.public_id}
-          layout="fill"
-          objectFit="cover"
-        />
+        <Image src={currentImage.public_id} layout="fill" objectFit="cover" />
       </div>
-    </>
+    </div>
   );
 };
 
