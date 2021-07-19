@@ -4,6 +4,7 @@
 //modules
 @use './modules/fonts';
 @use './modules/colors';
+@use './modules/mixins';
 
 //layout
 @use './layout';
@@ -21,7 +22,7 @@ body {
   font-family: fonts.$roboto;
   font-size: 16px;
   color: colors.$black;
-  transition: margin-right .3s ease;
+  position: relative;
   &.open {
     overflow-y: hidden;
   }
@@ -35,6 +36,15 @@ b, strong {
 }
 a {
   text-decoration: none;
+  &:hover {
+    cursor: none;
+  }
+}
+
+input {
+  &:hover {
+    cursor: none;
+  }
 }
 
 h1 {
@@ -50,4 +60,15 @@ h2 {
 h3 {
   font-weight: 500;
   font-size: 2rem;
+}
+
+@include mixins.animations;
+
+.slide-in-left {
+  animation: slide-in-left 1s ease;
+  animation-fill-mode: both;
+}
+.slide-in-right{
+  animation: slide-in-right 1s ease;
+  animation-fill-mode: both;
 }
