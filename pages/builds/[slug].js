@@ -56,13 +56,25 @@ const BuildDetails = ({ build, builds }) => {
     setCurrentImage(initImg);
     closeMenu();
   }, [build]);
+  
+  useEffect(() => {
+    shuffle(images)
+  }, [])
+
+  const shuffle = (arr) => {
+    let currentIndex = arr.length
+    let randomIndex
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--
+
+      [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
+    }
+    return arr;
+  }
 
   const galleryImages = images.map((image) => {
-
-    const randomNumber = {
-      order: Math.floor(Math.random() * images.length),
-    }
-
     return (
       <div
         className="img-wrapper"
@@ -71,8 +83,6 @@ const BuildDetails = ({ build, builds }) => {
           setCurrentImage(image);
           setImageIdx(images.indexOf(image));
         }}
-        // TODO figure out how to randomize order of images in gallery just once rather than it updating every time the current image is changed
-          // style={randomNumber}
         >
         <Image
           src={`${image.public_id}.${image.format}`}
