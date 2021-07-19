@@ -6,6 +6,6 @@ module.exports = {
       "res.cloudinary.com",
     ],
     loader: "cloudinary",
-    path: "https://res.cloudinary.com/djkezs8h2/image/upload/",
+    path: "https://res.cloudinary.com/djkezs8h2/image/upload/f_auto/q_auto/",
   },
 };
