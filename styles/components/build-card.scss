@@ -2,60 +2,45 @@
 @use '../modules/fonts';
 
 #build-card {
-  // padding: 1em;
   width: calc(100vw - 2em);
-  height: 600px;
-  display:flex;
+  height: 50vh;
+  display: flex;
   justify-content: flex-start;
-  transition: all 0.3s ease;
-  // border-bottom: 1px solid colors.$gray;
   position: relative;
+  border-bottom: 1px solid colors.$gray;
   .details {
-    // margin-left: 100px;
     top: 50%;
-    left: 100px;
-    min-width: 500px;
+    left: 7em;
+    width: 500px;
     padding: 3em;
     transform: translateY(-50%);
-    position:absolute;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: colors.$white;
-    h4 {
-    font-size: 2.5em;
-    font-weight: 600;
-    margin-top: 0;
-    color: colors.$black;
-  }
-  p {
-    color: colors.$gray;
-    font-family: fonts.$monospace;
-  }
+    background: rgba(colors.$white, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid colors.$black;
+    h2 {
+      font-size: 2.2em;
+      color: colors.$black;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: colors.$black;
+      font-family: fonts.$monospace;
+    }
   }
   .image {
-    // width: 500px;
-    // height: 652px;
     width: 100%;
     position: relative;
     img {
-      transition: .3s ease;
+      transition: all 1.5s cubic-bezier(0, 1, 1, 1);
     }
   }
   &:hover {
-    cursor: pointer;
     img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
-  // &:nth-child(odd) {
-  //   justify-content: flex-end;
-  //   .details {
-  //     text-align: right;
-  //   }
-  //   .image {
-  //     order: 2;
-  //     margin-left: 100px;
-  //   }
-  // }
 }
