@@ -27,7 +27,9 @@
       z-index: 99999;
       transform: translate(-50%, -50%);
       pointer-events: none;
+      backdrop-filter: blur(3px) hue-rotate(180deg);
   }
+  
   .nav {
     position: fixed;
     z-index: 999;
