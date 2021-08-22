@@ -77,7 +77,7 @@ const BuildDetails = ({ build, builds }) => {
 
   const galleryImages = images.map((image) => {
     return (
-      <div
+      <li
         className="img-wrapper"
         key={image.public_id}
         onClick={() => {
@@ -88,9 +88,9 @@ const BuildDetails = ({ build, builds }) => {
         <Image
           src={`${image.public_id}.${image.format}`}
           layout="fill"
-          objectFit="cover"
+          // objectFit="cover"
         />
-      </div>
+      </li>
     );
   });
 
@@ -134,7 +134,7 @@ const BuildDetails = ({ build, builds }) => {
           </div>
           <div className="gallery">
             <h2>Gallery</h2>
-            <div className="gallery-images">{galleryImages}</div>
+            <ul className="gallery-images">{galleryImages}</ul>
           </div>
         </article>
       </div>
