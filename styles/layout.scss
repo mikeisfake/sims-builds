@@ -17,18 +17,18 @@
 
 #layout {
   position: relative;
-  cursor: none;
-  .cursor {
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      border-radius: 50%;
-      border: 2px solid white; 
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      backdrop-filter: blur(3px) hue-rotate(180deg);
-  }
+  // cursor: none;
+  // .cursor {
+  //     width: 30px;
+  //     height: 30px;
+  //     position: absolute;
+  //     border-radius: 50%;
+  //     border: 2px solid white; 
+  //     z-index: 99999;
+  //     transform: translate(-50%, -50%);
+  //     pointer-events: none;
+  //     backdrop-filter: blur(3px) hue-rotate(180deg);
+  // }
   
   .nav {
     position: fixed;
@@ -57,7 +57,7 @@
     }
     &:hover {
       background: lighten(colors.$red, 8%);
-      cursor: none;
+      // cursor: none;
       .circle {
         background: colors.$off-white;
       }
