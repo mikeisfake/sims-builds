@@ -93,8 +93,8 @@
     li.active a {
       background: colors.$off-white;
       color: colors.$red;
-      cursor: default;
-      pointer-events: none;
+      // cursor: default;
+      // pointer-events: none;
     }
   }
   .description {
