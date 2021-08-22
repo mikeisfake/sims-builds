@@ -57,22 +57,23 @@ const BuildDetails = ({ build, builds }) => {
     closeMenu();
   }, [build]);
   
-  useEffect(() => {
-    shuffle(images)
-  }, [])
+  // useEffect(() => {
+  //   shuffle(images);
+  //   console.log('effect fired!')
+  // }, [])
 
-  const shuffle = (arr) => {
-    let currentIndex = arr.length
-    let randomIndex
+  // const shuffle = (arr) => {
+  //   let currentIndex = arr.length
+  //   let randomIndex
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--
+  //   while (0 !== currentIndex) {
+  //     randomIndex = Math.floor(Math.random() * currentIndex);
+  //     currentIndex--
 
-      [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
-    }
-    return arr;
-  }
+  //     [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
+  //   }
+  //   return arr;
+  // };
 
   const galleryImages = images.map((image) => {
     return (
