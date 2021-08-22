@@ -6,27 +6,26 @@ import { openMenu, closeMenu } from '../functions/HandleMenu';
 
  const Layout = ({ children }) => {
 
-  const [left, setLeft] = useState(0)
-  const [top, setTop] = useState(0)
+  // const [left, setLeft] = useState(0)
+  // const [top, setTop] = useState(0)
 
   useEffect(() => {
     closeMenu()
   }, [])
 
-  const handleMouseMove = (e) => {
-    setLeft(e.nativeEvent.pageX)
-    setTop(e.nativeEvent.pageY)
-  };
+  // const handleMouseMove = (e) => {
+  //   setLeft(e.nativeEvent.pageX)
+  //   setTop(e.nativeEvent.pageY)
+  // };
 
-  const cursorStyle = {
-    top: top + 'px',
-    left: left + 'px',
-  }
+  // const cursorStyle = {
+  //   top: top + 'px',
+  //   left: left + 'px',
+  // }
 
 
    return (
-     <div id="layout" onMouseMove={handleMouseMove}>
-       <div className="cursor" style={cursorStyle}></div>
+     <div id="layout">
        <Head>
          <title>Sims Builds</title>
          <meta
